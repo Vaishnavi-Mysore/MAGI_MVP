@@ -1,7 +1,3 @@
-# Description for User Story 1: Homepage
-Named the Project as per guided -> magi-mvp-frontend
-Cleared all the svg and CSS styling in the create vite@latest Project
-Created the Folders as per the structure
 
 ## Logic in creating the folder structure:
 If the landing page has,
