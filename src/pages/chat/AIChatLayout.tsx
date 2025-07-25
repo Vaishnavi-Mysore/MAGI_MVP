@@ -11,7 +11,7 @@ const AIChatLayout = () => {
       </div>
 
       {/* Constrained main chat layout */}
-      <div className="flex flex-col h-[calc(100vh-117px)] max-w-5xl mx-auto rounded">
+      <div className="flex flex-col h-[calc(100vh-110px)] max-w-5xl mx-auto rounded">
         <ChatMessageBody />
         <ChatInput />
       </div>

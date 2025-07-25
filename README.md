@@ -14,6 +14,46 @@ The signup page is loaded with all the required sign up components
 3. useDispatch can be used conditionally to avoid unnecessary renders 
 4. Onclick function needs to be checked
 
+## For Reusable Wrapper component :
+1. CustomButton 
+    - Label, CSS class names, variants, loading logics, open close modal logics, useRef logics, icons inside buttons, disabled logic
+2. CustomIconButton
+3. ToolTipWrapper
+4. Select/Dropdown
+
+## Migrate the vcg repo Chat component :
+1. Get the CDN links similar to the material UI icons
+2. Find a best to render the messages
+3. As a further Refactor create a custom component for the icon button as well
+4. Created a Custom Tooltip wrapper
+5. First create a Chat Input component for sending text and files(.pdf, .xlxs, .doc) along with the send CDN button
+6. Once Message/file are sent store the data in the redux state
+7. Isolate the send button and perform the async operation in that component
+8. When there is the change in the Redux state render the Message Body Component
+
+Component	Common Props Example
+Button	children, onClick, type, variant, disabled, className, icon
+Input	type, value, onChange, placeholder, label, error, className, disabled
+Select	options, value, onChange, placeholder, label, disabled, className
+Modal	open, onClose, children, title, className
+Card	children, title, footer, className
+Navbar	links, brand, user, onLogout, className
+Sidebar	items, open, onToggle, className
+Toast	message, type, open, onClose, duration
+Table	columns, data, onRowClick, sortable, paginated, className
+Loader	size, color, className
+
+1. Make the navbar responsive
+2. Complete placing all the other section
+    - Place the partners icons as corousel
+    - Place the Why choose into a card component 
+    - Place the illustrator component 
+    - Place the footer section
+
+1. Add the skeleton or loader till the response received from the API
+2. Chat with the AI and document the response try using the logger not manually
+3. Use Framer nmotion for the Animation
+
 # Folder Structure
 ```
 /src

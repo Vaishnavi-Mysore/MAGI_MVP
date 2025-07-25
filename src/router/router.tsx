@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 // import App from '../App';
 import { lazy, Suspense } from 'react';
+import Loaders from '../components/common/spinners/Loaders';
 const AIChatLayout = lazy(() => import('../pages/chat/AIChatLayout'));
 // const AuthPage = lazy(() => import('../pages/auth/AuthPage'));
 const Home = lazy(() => import('../pages/homepage/Home'));
@@ -10,14 +11,14 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: (
-            <Suspense fallback={<div>Loading App...</div>}>
+            <Suspense fallback={<Loaders />}>
                 <App />
             </Suspense>),
         children: [{
             index: true,
             element: (
                 // This is where to add a loading component in the fallback
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loaders />}>
                     {/* Render the required component */}
                     <Home />
                 </Suspense>
@@ -35,11 +36,11 @@ const router = createBrowserRouter([
         {
             path: '/chat',
             element: (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loaders />}>
                     <AIChatLayout />
                 </Suspense>
             )
-        }
+        },
         ]
     }
 ])

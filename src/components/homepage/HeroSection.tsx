@@ -1,44 +1,43 @@
-// Sample page to find the effectiveness in redux setup
-import CustomButton from '../ui/homepage-ui/CustomButton';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { setHeroButtonLabel, setHeroButtonVariant } from '../../features/reduxslices/uiSlices/buttonSlices';
+import CustomButton from '../common/button/CustomButton';
 import { useNavigate } from 'react-router-dom';
-import TooltipWrapper from '../ui/homepage-ui/TooltipWrapper';
+import TooltipWrapper from '../common/button/TooltipWrapper';
 
 const HeroSection = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Conditionally label and variant can be changed 
-    // Set initial button style and label for hero section
-    dispatch(setHeroButtonLabel('Get Started'));
-    dispatch(setHeroButtonVariant('secondary'));
-  }, [dispatch]);
   console.log('HeroSection rendered');
 
-  // Sign Up Button Functionality
+  // Sign Up Button Functionality must be isolated
   const handleHeroSectionSignUp = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // Logic for sign up can be added here
     console.log('Sign Up button clicked');
-    navigate('/chat'); // Navigate to the sign-up page
+    navigate('/chat'); // Current Chat page
   };
 
   return (
-    <section className="flex flex-col items-center justify-center text-center py-20 px-6 bg-gradient-to-b from-white to-blue-50">
-      <h1 className="text-4xl md:text-5xl font-bold text-blue-800 mb-4">
+    <>
+      <h1 id="hero-heading" className="text-3xl md:text-5xl font-bold text-[#15477A] mb-3">
         Welcome to Magi Platform
       </h1>
-      <p className="text-gray-600 text-lg md:text-xl mb-8 max-w-2xl">
-        Generative AI Assistance for Oil & Gas Operations
-        Boost productivity, streamline operations, and manage compliance seamlessly with magi—your innovative and reliable solution for the oil and gas industry.
+      <p className="md:text-lg text-xs inline-block bg-pink-100 text-red-600 md:px-4 md:py-2 px-1 py-1 rounded-full font-thin mb-4">
+        WORLD'S 1ST AI-POWERED UPSTREAM CONSULTING HOUSE FREE DEMO
       </p>
+      <h2 className="md:text-3xl text-lg font-normal text-blue-900 max-w-2xl mx-auto mb-3">
+        Generative{" "}
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-pink-600 to-red-700">
+          AI Assistance
+        </span>{" "}
+        for Oil &amp; Gas Operations
+      </h2>
+      <p className="text-gray-800 md:text-lg text-xs tracking-wide max-w-3xl mx-auto mb-4">
+        Boost productivity, streamline operations, and manage compliance seamlessly with{" "}
+        <strong>magi</strong> — your innovative and reliable solution for the oil and gas industry.
+      </p>
+      {/* Isolate the CustomButton and do API calls and state changes */}
       <TooltipWrapper tooltipText='Click to Chat'>
-        <CustomButton source="hero" onClick={handleHeroSectionSignUp} />
+        <CustomButton label="Get Started" usage="button" variant='secondary' onClick={handleHeroSectionSignUp} />
       </TooltipWrapper>
-    </section>
+    </>
   );
 };
 

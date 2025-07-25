@@ -1,8 +1,8 @@
 // Signup.tsx component with hook form and spinner integration
 import { useForm, FormProvider } from 'react-hook-form';
-import InputField from '../ui/form-ui/InputField';
-import CustomButton from '../ui/homepage-ui/CustomButton';
-import ButtonSpinner from '../ui/spinners/ButtonSpinner';
+import InputField from '../common/form/InputField';
+import CustomButton from '../common/button/CustomButton';
+import ButtonSpinner from '../common/spinners/Loaders';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setSpinLoader } from '../../features/reduxslices/loaderToggles/isSpinner';
@@ -71,7 +71,8 @@ const Signup = () => {
           />
 
           <CustomButton
-            source="navbar"
+            usage='button'
+            label=''
             type="submit"
             customContent={isSubmitting ? <ButtonSpinner /> : undefined}
           />

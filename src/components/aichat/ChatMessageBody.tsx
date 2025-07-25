@@ -38,15 +38,13 @@ const ChatMessageBody: React.FC = () => {
   }
 
   // For every message the components gets renders can be optimized
-  console.log('Chat Body rendered');
-
+  console.log('ChatMessageBody rendered');
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 bg-gray-50 rounded-md">
+    <div className="flex-1 overflow-y-auto px-3 py-2 space-y-4 bg-gray-50 rounded-md">
       {messages.map((msg) => (
         <div
           key={msg.timestamp}
-          className={`flex flex-col items-${msg.sender === 'user' ? 'end' : 'start'
-            }`}
+          className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
         >
           <div
             className={`max-w-xs md:max-w-md lg:max-w-lg px-4 py-2 rounded-lg text-sm shadow-md ${msg.sender === 'user'
@@ -54,9 +52,14 @@ const ChatMessageBody: React.FC = () => {
               : 'bg-[#AA0732] text-white rounded-bl-none'
               }`}
           >
-            {msg.content}
+            {msg.sender === 'receiver' && msg.content === '' ? (
+              <div className="w-32 h-5 bg-white/40 rounded animate-pulse" />
+            ) : (
+              msg.content
+            )}
+
           </div>
-          <span className="text-xs text-gray-500 mt-0.5 px-2">
+          <span className="text-xs text-gray-500 mt-0.5 px-2 self-end">
             {formatTime(msg.timestamp)}
           </span>
         </div>
@@ -64,6 +67,7 @@ const ChatMessageBody: React.FC = () => {
       <div ref={messageEndRef} />
     </div>
   );
+
 };
 
 export default ChatMessageBody;

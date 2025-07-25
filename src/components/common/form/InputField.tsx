@@ -29,10 +29,13 @@ const InputField = <T extends FieldValues>({
 }: InputFieldProps<T>) => {
   // const hasRight = Boolean(rightElement);
 
+  const labelId = label ? `${name}-label` : undefined;
+
   return (
     <div className="w-full">
       {label && (
         <label
+          id={labelId}
           htmlFor={name}
           className={`text-sm font-medium text-gray-700 `}
         >
@@ -49,6 +52,7 @@ const InputField = <T extends FieldValues>({
           id={name}
           type={type}
           placeholder={placeholder}
+          aria-labelledby={labelId}
           {...register(name, { required })}
           className="flex-1 border-none outline-none bg-transparent text-sm placeholder-gray-400"
         />

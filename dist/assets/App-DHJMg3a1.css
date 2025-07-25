@@ -1,0 +1,1 @@
+.partners-slider{display:flex;width:200%;animation:slide 20s linear infinite}@keyframes slide{0%{transform:translate(0)}to{transform:translate(-50%)}}
